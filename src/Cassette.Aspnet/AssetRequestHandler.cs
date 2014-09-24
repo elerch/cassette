@@ -36,12 +36,17 @@ namespace Cassette.Aspnet
                     throw new HttpException((int) HttpStatusCode.NotFound, "Asset not found");
                 }
 
-                SendAsset(bundle, asset);
+                SendAsset(bundle, asset, path.EndsWith(".map", System.StringComparison.InvariantCultureIgnoreCase));
             }
         }
 
-        void SendAsset(Bundle bundle, IAsset asset)
+        void SendAsset(Bundle bundle, IAsset asset, bool isMap)
         {
+            if (isMap) {
+                response.ContentType = "application/json";
+                response.Write(asset.SourceMap);
+                return;
+            }
             response.ContentType = bundle.ContentType;
 
             var actualETag = "\"" + asset.Hash.ToHexString() + "\"";

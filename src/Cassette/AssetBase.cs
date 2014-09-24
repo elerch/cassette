@@ -41,5 +41,7 @@ namespace Cassette
         public abstract void AddReference(string path, int lineNumber);
 
         public abstract void AddRawFileReference(string relativeFilename);
+
+        public virtual string SourceMap { get; set; }
     }
 }

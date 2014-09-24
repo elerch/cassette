@@ -8,6 +8,11 @@ namespace Cassette
     public interface IAsset
     {
         /// <summary>
+        /// Gets the source map for this asset
+        /// </summary>
+        string SourceMap { get; set; }
+
+        /// <summary>
         /// Gets a type of <see cref="IAssetCacheValidator"/> used to validate if a cache.
         /// </summary>
         Type AssetCacheValidatorType { get; }

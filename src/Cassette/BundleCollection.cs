@@ -682,10 +682,12 @@ namespace Cassette
 
         public bool TryGetAssetByPath(string path, out IAsset asset, out Bundle bundle)
         {
+            var isMap = path.EndsWith(".map", StringComparison.InvariantCultureIgnoreCase);
+            var pathWithoutMap = isMap ? path.Remove(path.Length - 4) : path;
             var results =
                 from b in bundles
-                where b.ContainsPath(path)
-                let a = b.FindAssetByPath(path)
+                where b.ContainsPath(pathWithoutMap)
+                let a = b.FindAssetByPath(pathWithoutMap)
                 where a != null
                 select new { Bundle = b, Asset = a };
 

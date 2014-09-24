@@ -73,5 +73,6 @@ namespace Cassette
         {
             throw new NotImplementedException();
         }
+        public string SourceMap { get; set; }
     }
 }

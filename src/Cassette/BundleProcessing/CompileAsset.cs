@@ -23,6 +23,7 @@ namespace Cassette.BundleProcessing
                 using (var input = new StreamReader(openSourceStream()))
                 {
                     var compileResult = Compile(asset, input);
+                    asset.SourceMap = compileResult.SourceMap;
                     AddRawFileReferenceForEachImportedFile(asset, compileResult);
                     return compileResult.Output.AsStream();
                 }

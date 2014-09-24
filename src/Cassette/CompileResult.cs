@@ -10,6 +10,16 @@ namespace Cassette
             ImportedFilePaths = importedFilePaths;
         }
 
+        public void AddSourceMap(string map)
+        {
+            SourceMap = map;
+        }
+
+        /// <summary>
+        /// Source map data, if available
+        /// </summary>
+        public string SourceMap { get; private set; }
+
         /// <summary>
         /// The compiled output.
         /// </summary>

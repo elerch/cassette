@@ -65,5 +65,6 @@ namespace Cassette
         {
             throw new NotSupportedException();
         }
+        public string SourceMap { get; set; }
     }
 }
